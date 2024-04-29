@@ -27,6 +27,50 @@ def insert_webpage(request):
         return HttpResponse('Webpage is created')
     else:
         return HttpResponse('Given Topic is Not present in My Parent Table')
+    
+
+
+
+def display_topic(request):
+    QLTO=Topic.objects.all()
+    d={'QLTO':QLTO}
+    return render(request,'display_topic.html',d)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 def insert_accessrecord(request): 
@@ -40,14 +84,13 @@ def insert_accessrecord(request):
     e=input('enter email:')
     na=Webpage.objects.get_or_create(topic_name=to,name=n,url=u,email=e)[0]
     na.save()
-    
+
     d=input('enter date:')
     a=input('enter author:')
     ac=AccessRecord.objects.get_or_create(name=na,date=d,author=a)[0]
     ac.save()
     return HttpResponse('accessrecord is created')
     
-
 
 
 
